@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
-class ConfigKeyNotExistException(Exception):
+class Notsupportsystemtypeexception(Exception):
     """
-    指定 Key 在配置文件中不存在
+    不支持的操作系统
     """
     pass
 
