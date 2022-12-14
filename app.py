@@ -1,8 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
-def vmfj():
-    pass
-
+from libcore.command.remove_command import RemoveCommand
+from libcore.command.vmfj import VMFJ
 
 if __name__ == '__main__':
-    vmfj()
+    VMFJ.run()
