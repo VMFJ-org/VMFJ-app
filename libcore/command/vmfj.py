@@ -35,44 +35,75 @@ class VMFJ:
         VMFJ.vmfj.add_command(cmd=RemoveCommand(
             name="remove",
             help="""
-\n1. Delete the installed Java (delete the files and environment variables in the installation directory), but do not delete the cache. (--install | -i)
-\n2. Delete the installed Java (delete the files and environment variables in the installation directory), but delete the cache. (--cache --install | -c -i)
-\n3. Do not delete the installed Java, but delete the cache of the specified Java. (--cache | -c)
-\n4. Do not delete the installed Java, but delete all caches.(--cache --all | -c -a)
-\n5. --install | -i is default.
-\n
-\n For example:
-\n  jjvmm remove Oracle
-\n  jjvmm remove oracle
-\n  jjvmm remove Oracle 19.0.1
-\n  jjvmm remove --install Oracle
-\n  jjvmm remove --install oracle 19.0.1
-\n  jjvmm remove --cache --all
-\n  jjvmm remove --cache Oracle
-\n  jjvmm remove --cache Oracle 19.0.1
-\n  jjvmm remove --cache --install Oracle
-\n  jjvmm remove --cache --install Oracle 19.0.1
-\n  jjvmm remove -i Oracle
-\n  jjvmm remove -i oracle 19.0.1
-\n  jjvmm remove -c -a
-\n  jjvmm remove -c Oracle
-\n  jjvmm remove -c Oracle 19.0.1
-\n  jjvmm remove -c -i Oracle
-\n  jjvmm remove -c -i Oracle 19.0.1
+this is remove command 
+\nfor example:
+\n\txxx
+\ndelete all Java JDK use:
+\n\tvmfj remove all
+\n\tvmj remove -i/--install all
+\n\tvmfj remove -c/--cache all
+\n\tvmfj remove -i -c/--install-cache all
+\n\tvmfj remove -c -i/--cache-install all
 """,
             short_help="Remove cached or installed Java environment.",
             params=[
-                RemoveCommandCacheOption(
-                    param_decls=("--install",),
+                RemoveCommandInstallOption(
+                    param_decls=("-i", "--install"),
                     is_flag=True,
                     help="Only delete installed Java."
+                ),
+                RemoveCommandallOption(
+                    param_decls=("-i", "-c", "--install", "--cache"),
+                    is_flag=True,
+                    help="Delete all Installed and Cache."
+                ),
+                RemoveCommandCacheOption(
+                    param_decls=['-c', '--cache'],
+                    is_flag=True,
+                    help="Only delete Cache Java"
+                ),
+                RemoveCommandPublisherArgument(
+                    param_decls=["publisher"],
+                    required=False
+                ),
+                RemoveCommandVersionArgument(
+                    param_decls=["version"],
+                    required=False
                 )
-                # RemoveCommandallOption(),
-                # RemoveCommandInstallOption(),
-                # RemoveCommandPublisherArgument(),
-                # RemoveCommandVersionArgument()
             ]
         ))
+
+        VMFJ.vmfj.add_command(cmd=DoctorCommand(
+            name="doctor",
+            help="this is dockor.",
+            params=[
+                DoctorCommandFixOption(
+                    param_decls=("-f", "--fix"),
+                    is_flag=True,
+                    help="Fix environment variable"
+                )
+            ]
+        ))
+
+        VMFJ.vmfj.add_command(cmd=)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         VMFJ.vmfj()
 
