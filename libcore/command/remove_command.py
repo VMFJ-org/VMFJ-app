@@ -10,6 +10,8 @@ class RemoveCommand(click.Command):
 
     def invoke(self, ctx: Context) -> t.Any:
         # TODO 通过 ctx.params 获取 用户参数字典，再通过字典关键字获取对应值，判断后调用cache删除缓存/已安装
+        a = ctx.params
+        print(a)
         pass
 
 
